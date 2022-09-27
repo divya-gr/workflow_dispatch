@@ -4,7 +4,19 @@ name: Manual-action-workflow
 
 # Controls when the workflow will run
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      name1:
+        description: 'enter the value of a'     
+        required: true
+        default: '10'
+      name2:
+        description: 'enter the value of b'     
+        required: true
+        default: '20'
+        
+        
+    
   
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -26,5 +38,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          echo "name1:${{github.event.inputs.name1}}"
+          echo "name2:${{github.event.inputs.name2}}"
+          
