@@ -28,15 +28,20 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+    env:
+      number1: github.event.inputs.name1
+      number2: github.event.inputs.name2
+#        Runs a set of commands using the runners shell
+       
+#    - name: Run a multi-line script
+#         run: |
+#           python one.py ${{github.event.inputs.name1}} ${{github.event.inputs.name2}}
+# Runs a set of commands using the runners shell
 
-      # Runs a single command using the runners shell
-      - name: First github workflow code
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Run a python script for adding two number
         run: |
-          python one.py ${{github.event.inputs.name1}} ${{github.event.inputs.name2}}
+          python one.py $number1 $number2
+        
+          
           
